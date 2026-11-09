@@ -94,7 +94,46 @@
 @media(max-width:800px){.sidebar{overflow-x:auto}.sidebar:after{display:none}.brand{margin:0 0 7px}.content{padding:11px}.topbar{padding:0;gap:9px}.topbar-tools{gap:6px}.topbar .search-shell{max-width:none}.topbar kbd{display:none}}
 @media(max-width:540px){.dashboard-hero{padding:19px 13px 110px;min-height:245px}.dashboard-hero h1{font-size:23px}.hero-art{right:5px;top:3px;opacity:.48}.hero-cat{font-size:70px}.hero-stats{gap:5px;left:7px;right:7px;bottom:8px}.hero-stat{padding:7px;gap:5px}.hero-stat i{font-size:14px}.hero-stat label{font-size:8px}.hero-stat strong{font-size:11px}.dash-bottom{grid-template-columns:1fr}.dash-bottom>.panel:last-child{grid-column:auto}.quick-types{grid-template-columns:repeat(2,1fr)}.quick-line{flex-wrap:wrap}.quick-line select{width:calc(50% - 4px)}.quick-line .btn{width:100%}}
 
-</style></head><body><div class="shell"><aside class="sidebar"><div class="brand">✦ <span>Mina</span> Planner</div><nav class="nav" id="nav"></nav><div class="bottom">🌷 <strong>Твой путь к мечте</strong><br>Большие достижения начинаются с маленьких шагов.</div></aside><main class="content"><header class="topbar"><div class="search-shell"><i class="icon icon-search"></i><input id="globalSearch" placeholder="Поиск по задачам, олимпиадам, проектам, курсам..." aria-label="Поиск по планеру"><kbd>⌘ K</kbd></div><div class="topbar-tools"><button class="iconbtn" data-action="notify" aria-label="Напоминания"><i class="icon icon-bell"></i></button><div class="avatar" title="Мина">👩🏻‍💻</div></div></header><div id="root"></div></main></div><div id="modalhost"></div><div id="toastHost"></div>
+
+/* illustrated spring refresh */
+body{background:radial-gradient(circle at 98% 2%,#f8eaff 0,transparent 35%),radial-gradient(circle at 15% 65%,#ffe8f6 0,transparent 48%),var(--bg)}
+body.dark{background:var(--bg)}
+.sidebar{background:linear-gradient(180deg,#fffefd,#faf3ff 50%,#f4e1f3)}
+.sidebar:after{content:"";inset:auto -12px -20px -30px;height:48%;width:calc(100% + 45px);background:url('assets/sakura-study.svg') 5% center/auto 100% no-repeat;opacity:.68;filter:saturate(1.1);transform:none;pointer-events:none}
+.sidebar:before{content:"✿  ✧  ❀";position:absolute;bottom:39%;left:18px;color:#e8a6d0;opacity:.8;font-size:26px;letter-spacing:24px;pointer-events:none}
+.dashboard-hero{background:#f6e5f4 url('assets/sakura-study.svg') center center/cover no-repeat;border:1px solid #edd4e8;box-shadow:0 10px 35px #c779a41c;min-height:215px;padding-top:23px}
+.dashboard-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fcf1ffeb 0%,#fbeafbca 30%,#fbeafb18 65%,transparent 100%);pointer-events:none}
+.dashboard-hero h1{position:relative;z-index:2;text-shadow:0 1px 2px #fff8;font-size:29px}
+.dashboard-hero p{position:relative;z-index:2;font-weight:600}
+.hero-art{display:none}
+.hero-stats{bottom:12px}
+.hero-stat{border:1px solid #ffffffa6;box-shadow:0 3px 14px #b8759b18;transition:transform .2s,box-shadow .2s}
+.hero-stat:hover{transform:translateY(-3px);box-shadow:0 8px 20px #b8759b33}
+.panel{transition:box-shadow .2s,border-color .2s}
+.dash-panel{background:linear-gradient(160deg,var(--card) 65%,color-mix(in srgb,var(--pink) 20%,var(--card)));border:1px solid color-mix(in srgb,var(--accent) 12%,var(--line));box-shadow:0 5px 22px #8f668c0f}
+.dash-panel:hover{box-shadow:0 10px 27px #a9679e1c;border-color:color-mix(in srgb,var(--accent) 26%,var(--line))}
+.dash-panel .panelhead h2 i{background:var(--pink);padding:7px;border-radius:9px;font-size:16px}
+.dash-panel .item:hover,.dash-task:hover{background:color-mix(in srgb,var(--pink) 18%,transparent);border-radius:9px}
+.dash-panel .btn.primary{background:linear-gradient(110deg,#e9a2cc,var(--accent))}
+.mini-chart .mini-column i{background:linear-gradient(180deg,#d978b0,#ebdcfb);border-radius:5px 5px 0 0}
+.nav button.active{background:linear-gradient(100deg,#f9e1f2,#edddff);box-shadow:0 3px 12px #be93c41a}
+.nav button{transition:background .2s,transform .2s}
+.nav button:hover{transform:translateX(3px)}
+.btn{transition:transform .16s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 13px #aa7db522}
+.topbar{border-bottom:1px solid var(--line);padding-bottom:12px;height:52px}
+.search-shell{background:#fff9ffeb}
+.dark .search-shell{background:var(--card)}
+.avatar{box-shadow:0 2px 10px #d978b04a}
+.petal{position:fixed;z-index:0;top:-50px;color:#eba9cc;pointer-events:none;opacity:0;animation:petalFall linear infinite;font-size:17px;transform:rotate(20deg)}
+.petal.p1{left:16%;animation-duration:17s;animation-delay:-3s}.petal.p2{left:44%;animation-duration:25s;animation-delay:-14s;font-size:12px}.petal.p3{left:87%;animation-duration:21s;animation-delay:-11s;font-size:14px}
+@keyframes petalFall{0%{transform:translate3d(0,-15px,0) rotate(0);opacity:0}7%{opacity:.38}82%{opacity:.34}100%{transform:translate3d(110px,100vh,0) rotate(520deg);opacity:0}}
+.shell{position:relative;z-index:1}
+@media(max-width:800px){.sidebar:after,.sidebar:before{display:none}.dashboard-hero{background-position:60% center}}
+@media(max-width:540px){.dashboard-hero{min-height:270px;background-position:59% center}.dashboard-hero:before{background:linear-gradient(90deg,#fcf1fff5 0%,#fbeafbda 48%,#fbeafb1a 100%)}.dashboard-hero h1{font-size:24px}.dashboard-hero p{max-width:210px}.hero-stats{bottom:9px}}
+@media(prefers-reduced-motion:reduce){.petal{display:none}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style></head><body><span class="petal p1" aria-hidden="true">✿</span><span class="petal p2" aria-hidden="true">❀</span><span class="petal p3" aria-hidden="true">✿</span><div class="shell"><aside class="sidebar"><div class="brand">✦ <span>Mina</span> Planner</div><nav class="nav" id="nav"></nav><div class="bottom">🌷 <strong>Твой путь к мечте</strong><br>Большие достижения начинаются с маленьких шагов.</div></aside><main class="content"><header class="topbar"><div class="search-shell"><i class="icon icon-search"></i><input id="globalSearch" placeholder="Поиск по задачам, олимпиадам, проектам, курсам..." aria-label="Поиск по планеру"><kbd>⌘ K</kbd></div><div class="topbar-tools"><button class="iconbtn" data-action="notify" aria-label="Напоминания"><i class="icon icon-bell"></i></button><div class="avatar" title="Мина">👩🏻‍💻</div></div></header><div id="root"></div></main></div><div id="modalhost"></div><div id="toastHost"></div>
 <script>
 (function(){
 'use strict';
